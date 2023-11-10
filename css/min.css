@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height:100vh;
+  background-color: #DBC1E5;
+  font-family: sans-serif;
+}
+
+.contenedor {
+  margin-top: 1rem;
+  display: grid;
+  place-items: center;
+}
+
+.contenedor__label {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.btn__label {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.btn__label span {
+  width: 40px;
+  height: 5px;
+  background-color: #030303;
+  border-radius: 3px;
+
+  transition: 300ms ease;
+}
+
+#btn_label {
+  display: none;
+}
+
+.menu {
+  background-color: #DBC1E5;
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 5px;
+  outline: 2px solid black;
+  outline-offset: 4px;
+  transition: 300ms ease;
+}
+
+.menu li {
+  padding: 10px 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu li::before {
+  background-color: white;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50);
+  width: 0;
+  height: 3px;
+  opacity: .0;
+  pointer-events: none;
+
+  transition: 500ms ease;
+}
+
+.menu li:hover::before {
+  width: 100%;
+}
+
+.menu li a {
+  color: black;
+  text-decoration:none;
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: felx;
+  gap: .3rem;
+  justify-content: center;
+  align-items: center;
+
+  transition: 300ms ease;
+}
+
+:has(#btn__label:checked) label span:first-child {
+  transform:
+    rotate(40deg)
+  translateY(5px)
+  translateX(5px)
+  ;
+}
+
+:has(#btn__label:checked) label span:nth-child(2){
+  display: none;
+}
+
+:has(#btn__label:checked) label span:last-child {
+  transform:
+    rotate(-40deg)
+    translateX(3px)
+    translateY(-5px)
+  ;
+}
+#btn__label:checked ~ .menu {
+  opacity: 1;
+  visibility: visible;
+}
